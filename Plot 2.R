@@ -1,8 +1,8 @@
 ##Plot 2 code
 
 #set wd
-#setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis")
-setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
+setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis/ExData_FinalRepo")
+#setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
 
 ##read in data
 NEI <- readRDS("summarySCC_PM25.rds")
@@ -24,5 +24,5 @@ axis(1,at = yearsData,labels = T)
 bestBaltFit <- lm(totBaltEmm ~ yearsData)
 abline(bestBaltFit, lwd=1.5)
 
-dev.copy(png,'Plot2.png')
+png(file='Plot2.png',width=480,height=480)
 dev.off

@@ -2,8 +2,8 @@
 
 
 #set wd
-#setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis")
-setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
+setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis/ExData_FinalRepo")
+#setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
 
 ##read in data
 NEI <- readRDS("summarySCC_PM25.rds")
@@ -39,5 +39,5 @@ axis(2,at = yticks,labels = yticks)
 bestFit <- lm(totEmm ~ yearsData)
 abline(bestFit, lwd=1.5)
 
-dev.copy(png,'Plot4.png')
+png(file='Plot4.png',width=480,height=480)
 dev.off

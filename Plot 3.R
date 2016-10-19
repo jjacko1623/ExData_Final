@@ -2,8 +2,8 @@
 
 
 #set wd
-#setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis")
-setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
+setwd("C:/Users/jjack_000/Desktop/Data Science JH course/Exploratory Data Analysis/ExData_FinalRepo")
+#setwd("C:/Users/Sophy/Desktop/JJ Coursera/Exploratory Data/ExData_Final")
 
 ##read in data
 NEI <- readRDS("summarySCC_PM25.rds")
@@ -49,7 +49,8 @@ colnames(totTypeBaltEmmYr) <- c("1999","2002","2005","2008")
 
 cleanData <- as.data.frame(totTypeBaltEmmYr)
 
-typelist <- c("POINT","POINT","POINT","POINT","NONPOINT","NONPOINT","NONPOINT","NONPOINT","ON-ROAD","ON-ROAD","ON-ROAD","ON-ROAD","NON-ROAD","NON-ROAD","NON-ROAD","NON-ROAD")
+#typelist <- c("POINT","POINT","POINT","POINT","NONPOINT","NONPOINT","NONPOINT","NONPOINT","ON-ROAD","ON-ROAD","ON-ROAD","ON-ROAD","NON-ROAD","NON-ROAD","NON-ROAD","NON-ROAD")
+typelist <- rep(rownames(totTypeBaltEmmYr),each=4)
 yearlist <- rep(c(1999,2002,2005,2008),4)
 totTypeBaltEmm <- c(totPBaltEmm,totNPBaltEmm,totRBaltEmm,totNRBaltEmm)
 
@@ -59,17 +60,8 @@ colnames(totTypeYrBaltEmm) <- c("Type","Year","TotalEmmissions")
 totTypeYrBaltEmmDF <- as.data.frame(totTypeYrBaltEmm)
 
 library(ggplot2)
-#library(gridExtra)
-
-#build plot
-#p99 <- qplot(yearsData,totPBaltEmm)
-#p02 <- qplot(yearsData,totNPBaltEmm)
-#p05 <- qplot(yearsData,totRBaltEmm)
-#p08 <- qplot(yearsData,totNRBaltEmm)
-
-#grid.arrange(p99,p02,p05,p08,cols=4)
 
 ggplot(totTypeYrBaltEmmDF,aes(Year,TotalEmmissions))+geom_point(color="aquamarine4")+facet_wrap(~Type,ncol=2) #+ scale_y_continuous(name="Total Emissions (per Type)",limits = c(2500, 8500))
 
-dev.copy(png,'Plot3.png')
+png(file='Plot3.png',width=480,height=480)
 dev.off
